@@ -6,8 +6,9 @@ Build a fast, Chinese-friendly one-page website that helps vessel crews and purc
 ## Page structure
 1. **Contact-first header**
    - Company name and English / 简体中文 language switch.
-   - Click-to-call mobile number, WhatsApp, WeChat ID, email, and Fujairah address visible immediately.
+   - Click-to-call mobile number, WhatsApp, WeChat ID, and email visible immediately.
    - Mobile quick-contact bar for Call, WhatsApp, WeChat, and RFQ.
+   - Place the Fujairah physical address in the lower contact area rather than making it a primary opening-page detail.
 
 2. **Opening section**
    - Follow the selected “Neon tech grid” direction: deep navy, ocean blue, cyan highlights, crisp operational grid, and restrained motion.
@@ -16,11 +17,12 @@ Build a fast, Chinese-friendly one-page website that helps vessel crews and purc
    - Avoid unsupported claims such as response times, years in business, certifications, or 24/7 availability.
 
 3. **One-stop-shop service panels**
-   - Three primary panels: Provisions; Technical Stores; Bonded Stores & Private Crew Orders.
-   - Clearly include fresh/dry provisions, gadgets, engine, deck, cabin/galley, electrical, safety equipment, toiletries, and crew purchases.
+   - Three primary panels: Provisions; Bonded Stores; Private Crew Orders.
+   - Clearly include frozen, fresh, and dry provisions, gadgets, cabin/galley supplies, and crew purchases.
+   - Include technical supply capability as supporting information, without giving it equal visual emphasis to the three core business lines.
 
 4. **Ports and service coverage**
-   - List Jebel Ali, Khalifa Port, RAK Mina Saqr, Fujairah Port, Khorfakkan Port, and all other UAE ports and anchorages.
+   - List ports in this exact priority order: Fujairah, Khorfakkan, Jebel Ali, Khalifa, RAK Mina Saqr, Sharjah, then all other UAE ports and anchorages.
    - Present the disclaimer as a visible service notice: port and customs charges, plus supply-boat charges where applicable, are excluded.
 
 5. **FAQ**
