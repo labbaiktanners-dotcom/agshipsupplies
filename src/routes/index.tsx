@@ -37,7 +37,7 @@ const copy = {
     navPorts: "Ports",
     navFaq: "FAQ",
     navRfq: "Request quote",
-    eyebrow: "UAE ship supply · Chinese-friendly service",
+    eyebrow: "UAE SHIP SUPPLY · CHINESE/GREEK/FILIPINO-FRIENDLY SERVICES",
     title: "Your reliable supply partner in every UAE port.",
     intro: "Provisions, bonded stores and private crew orders for Chinese vessels calling at ports and anchorages across the UAE.",
     submitRfq: "Submit RFQ",
