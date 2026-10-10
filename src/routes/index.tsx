@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import portImage from "@/assets/uae-port-night.jpg";
 import wechatQr from "@/assets/wechat-qr.png.asset.json";
-import whatsappQr from "@/assets/whatsapp-qr.png";
+import whatsappQr from "@/assets/whatsapp-qr.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { CONTACT, PORTS } from "@/lib/site-content";
 
@@ -255,7 +255,7 @@ function Index() {
             <Field name="vessel" label={c.vessel} maxLength={100} /><Field name="email" label={c.vesselEmail} type="email" maxLength={255} /><Field name="port" label={c.port} maxLength={100} /><Field name="eta" label={c.eta} type="datetime-local" maxLength={80} /><Field name="items" label={c.items} textarea maxLength={3000} className="sm:col-span-2" />
             <div className="bg-card p-5 sm:col-span-2 sm:p-6">{error && <p role="alert" className="mb-4 text-sm text-destructive">{error}</p>}<div className="flex flex-col gap-3 sm:flex-row"><Button type="submit" className="flex-1"><Mail className="size-4" />{c.emailRfq}</Button><Button type="button" variant="outline" className="flex-1" onClick={submitWhatsApp}><MessageCircle className="size-4" />{c.whatsappRfq}</Button></div><p className="mt-4 font-body text-xs text-muted-foreground">{c.po} <a href={`mailto:${CONTACT.email}`} className="text-accent underline underline-offset-4">{CONTACT.email}</a></p></div>
           </form>
-          <div className="grid gap-px border-t border-border bg-border sm:grid-cols-2"><QrCard image={whatsappQr} label="WhatsApp" /><div className="bg-panel p-5"><div className="flex items-center gap-4"><img src={wechatQr.url} alt="QR code containing the WeChat ID HajiDubai" width={580} height={586} loading="lazy" className="size-24 bg-foreground p-1" /><div><p className="text-xs uppercase text-muted-foreground">{c.scan}</p><p className="mt-1 font-semibold">WeChat</p><p className="text-sm text-accent">{CONTACT.wechat}</p></div></div><Button type="button" variant="ghost" size="sm" className="mt-3" onClick={copyWechat}>{copied ? <Check className="size-4" /> : <Copy className="size-4" />}{copied ? c.copied : c.copyWechat}</Button></div></div>
+          <div className="grid gap-px border-t border-border bg-border sm:grid-cols-2"><QrCard image={whatsappQr.url} label="WhatsApp" /><div className="bg-panel p-5"><div className="flex items-center gap-4"><img src={wechatQr.url} alt="QR code containing the WeChat ID HajiDubai" width={580} height={586} loading="lazy" className="size-24 bg-foreground p-1" /><div><p className="text-xs uppercase text-muted-foreground">{c.scan}</p><p className="mt-1 font-semibold">WeChat</p><p className="text-sm text-accent">{CONTACT.wechat}</p></div></div><Button type="button" variant="ghost" size="sm" className="mt-3" onClick={copyWechat}>{copied ? <Check className="size-4" /> : <Copy className="size-4" />}{copied ? c.copied : c.copyWechat}</Button></div></div>
         </div>
       </div></section>
 
@@ -282,5 +282,5 @@ function Field({ name, label, type = "text", textarea = false, maxLength, classN
 }
 
 function QrCard({ image, label }: { image: string; label: string }) {
-  return <div className="flex items-center gap-4 bg-panel p-5"><img src={image} alt={`QR code to contact Arabian Gulf Ship Supplies on ${label}`} width={384} height={384} loading="lazy" className="size-24 bg-foreground p-1" /><div><p className="text-xs uppercase text-muted-foreground">Scan to contact</p><p className="mt-1 font-semibold">{label}</p><p className="text-xs text-accent">{CONTACT.phoneDisplay}</p></div></div>;
+  return <div className="flex items-center gap-4 bg-panel p-5"><img src={image} alt={`QR code to contact Arabian Gulf Ship Supplies on ${label}`} width={446} height={444} loading="lazy" className="size-24 bg-foreground p-1" /><div><p className="text-xs uppercase text-muted-foreground">Scan to contact</p><p className="mt-1 font-semibold">{label}</p><p className="text-xs text-accent">{CONTACT.phoneDisplay}</p></div></div>;
 }
