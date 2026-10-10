@@ -16,4 +16,8 @@ describe("business website requirements", () => {
     expect(CONTACT.email).toBe("sales@agshipsupplies.com");
     expect(CONTACT.wechat).toBe("HajiDubai");
   });
+
+  it("keeps the WhatsApp link pointing at the number shown on the card", () => {
+    expect(CONTACT.whatsappHref).toBe(`https://wa.me/${CONTACT.phoneDisplay.replace(/\D/g, "")}`);
+  });
 });
