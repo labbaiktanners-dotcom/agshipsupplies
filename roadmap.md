@@ -5,3 +5,4 @@
 - [x] Keep technical supplies as supporting information
 - [x] Use the requested UAE port order and secondary Fujairah address placement
 - [x] Verify RFQ contact actions and responsive layout
+- [x] Give both QR cards a copy button so they align equally
