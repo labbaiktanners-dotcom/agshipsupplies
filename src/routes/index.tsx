@@ -81,6 +81,7 @@ const copy = {
     po: "Purchase orders can also be sent directly to",
     scan: "Scan to contact",
     copyWechat: "Copy WeChat ID",
+    copyWhatsapp: "Copy WhatsApp number",
     copied: "Copied",
     address: "Office address",
     validation: "Please complete every field with a valid email address.",
@@ -134,6 +135,7 @@ const copy = {
     po: "采购订单也可直接发送至",
     scan: "扫码联系",
     copyWechat: "复制微信号",
+    copyWhatsapp: "复制 WhatsApp 号码",
     copied: "已复制",
     address: "办公地址",
     validation: "请填写所有项目，并提供有效的电子邮箱。",
@@ -151,7 +153,7 @@ const rfqSchema = z.object({
 function Index() {
   const [language, setLanguage] = useState<Language>("en");
   const [error, setError] = useState("");
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState("");
   const c = copy[language];
 
   const getRfq = (form: HTMLFormElement) => {
@@ -182,11 +184,14 @@ function Index() {
     window.open(`${CONTACT.whatsappHref}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
   };
 
-  const copyWechat = async () => {
-    await navigator.clipboard.writeText(CONTACT.wechat);
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1800);
+  const copyValue = async (value: string, key: string) => {
+    await navigator.clipboard.writeText(value);
+    setCopied(key);
+    window.setTimeout(() => setCopied(""), 1800);
   };
+
+  const copyWechat = () => copyValue(CONTACT.wechat, "wechat");
+  const copyWhatsapp = () => copyValue(CONTACT.phoneDisplay, "whatsapp");
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
