@@ -81,6 +81,7 @@ const copy = {
     po: "Purchase orders can also be sent directly to",
     scan: "Scan to contact",
     copyWechat: "Copy WeChat ID",
+    copyWhatsapp: "Copy WhatsApp number",
     copied: "Copied",
     address: "Office address",
     validation: "Please complete every field with a valid email address.",
@@ -134,6 +135,7 @@ const copy = {
     po: "采购订单也可直接发送至",
     scan: "扫码联系",
     copyWechat: "复制微信号",
+    copyWhatsapp: "复制 WhatsApp 号码",
     copied: "已复制",
     address: "办公地址",
     validation: "请填写所有项目，并提供有效的电子邮箱。",
@@ -151,7 +153,7 @@ const rfqSchema = z.object({
 function Index() {
   const [language, setLanguage] = useState<Language>("en");
   const [error, setError] = useState("");
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState("");
   const c = copy[language];
 
   const getRfq = (form: HTMLFormElement) => {
@@ -182,11 +184,14 @@ function Index() {
     window.open(`${CONTACT.whatsappHref}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
   };
 
-  const copyWechat = async () => {
-    await navigator.clipboard.writeText(CONTACT.wechat);
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1800);
+  const copyValue = async (value: string, key: string) => {
+    await navigator.clipboard.writeText(value);
+    setCopied(key);
+    window.setTimeout(() => setCopied(""), 1800);
   };
+
+  const copyWechat = () => copyValue(CONTACT.wechat, "wechat");
+  const copyWhatsapp = () => copyValue(CONTACT.phoneDisplay, "whatsapp");
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
@@ -255,7 +260,7 @@ function Index() {
             <Field name="vessel" label={c.vessel} maxLength={100} /><Field name="email" label={c.vesselEmail} type="email" maxLength={255} /><Field name="port" label={c.port} maxLength={100} /><Field name="eta" label={c.eta} type="datetime-local" maxLength={80} /><Field name="items" label={c.items} textarea maxLength={3000} className="sm:col-span-2" />
             <div className="bg-card p-5 sm:col-span-2 sm:p-6">{error && <p role="alert" className="mb-4 text-sm text-destructive">{error}</p>}<div className="flex flex-col gap-3 sm:flex-row"><Button type="submit" className="flex-1"><Mail className="size-4" />{c.emailRfq}</Button><Button type="button" variant="outline" className="flex-1" onClick={submitWhatsApp}><MessageCircle className="size-4" />{c.whatsappRfq}</Button></div><p className="mt-4 font-body text-xs text-muted-foreground">{c.po} <a href={`mailto:${CONTACT.email}`} className="text-accent underline underline-offset-4">{CONTACT.email}</a></p></div>
           </form>
-          <div className="grid gap-px border-t border-border bg-border sm:grid-cols-2"><QrCard image={whatsappQr.url} label="WhatsApp" /><div className="bg-panel p-5"><div className="flex items-center gap-4"><img src={wechatQr.url} alt="QR code containing the WeChat ID HajiDubai" width={580} height={586} loading="lazy" className="size-24 bg-foreground p-1" /><div><p className="text-xs uppercase text-muted-foreground">{c.scan}</p><p className="mt-1 font-semibold">WeChat</p><p className="text-sm text-accent">{CONTACT.wechat}</p></div></div><Button type="button" variant="ghost" size="sm" className="mt-3" onClick={copyWechat}>{copied ? <Check className="size-4" /> : <Copy className="size-4" />}{copied ? c.copied : c.copyWechat}</Button></div></div>
+          <div className="grid gap-px border-t border-border bg-border sm:grid-cols-2"><QrCard image={whatsappQr.url} alt="QR code to contact Arabian Gulf Ship Supplies on WhatsApp" label="WhatsApp" value={CONTACT.phoneDisplay} scanLabel={c.scan} copyLabel={c.copyWhatsapp} copiedLabel={c.copied} isCopied={copied === "whatsapp"} onCopy={copyWhatsapp} width={446} height={444} /><QrCard image={wechatQr.url} alt="QR code containing the WeChat ID HajiDubai" label="WeChat" value={CONTACT.wechat} scanLabel={c.scan} copyLabel={c.copyWechat} copiedLabel={c.copied} isCopied={copied === "wechat"} onCopy={copyWechat} width={580} height={586} /></div>
         </div>
       </div></section>
 
@@ -281,6 +286,6 @@ function Field({ name, label, type = "text", textarea = false, maxLength, classN
   return <label className={`block bg-card p-4 ${className}`}><span className="text-xs font-medium uppercase text-muted-foreground">{label}</span>{textarea ? <textarea name={name} maxLength={maxLength} rows={5} required className={classes} /> : <input name={name} type={type} maxLength={maxLength} required className={classes} />}</label>;
 }
 
-function QrCard({ image, label }: { image: string; label: string }) {
-  return <div className="flex items-center gap-4 bg-panel p-5"><img src={image} alt={`QR code to contact Arabian Gulf Ship Supplies on ${label}`} width={446} height={444} loading="lazy" className="size-24 bg-foreground p-1" /><div><p className="text-xs uppercase text-muted-foreground">Scan to contact</p><p className="mt-1 font-semibold">{label}</p><p className="text-xs text-accent">{CONTACT.phoneDisplay}</p></div></div>;
+function QrCard({ image, alt, label, value, scanLabel, copyLabel, copiedLabel, isCopied, onCopy, width, height }: { image: string; alt: string; label: string; value: string; scanLabel: string; copyLabel: string; copiedLabel: string; isCopied: boolean; onCopy: () => void; width: number; height: number }) {
+  return <div className="bg-panel p-5"><div className="flex items-center gap-4"><img src={image} alt={alt} width={width} height={height} loading="lazy" className="size-24 bg-foreground p-1" /><div><p className="text-xs uppercase text-muted-foreground">{scanLabel}</p><p className="mt-1 font-semibold">{label}</p><p className="text-sm text-accent">{value}</p></div></div><Button type="button" variant="ghost" size="sm" className="mt-3" onClick={onCopy}>{isCopied ? <Check className="size-4" /> : <Copy className="size-4" />}{isCopied ? copiedLabel : copyLabel}</Button></div>;
 }
