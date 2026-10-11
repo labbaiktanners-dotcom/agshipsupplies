@@ -39,7 +39,7 @@ const copy = {
     navRfq: "Request quote",
     eyebrow: "UAE SHIP SUPPLY · CHINESE/GREEK/FILIPINO/INDIAN-FRIENDLY SERVICES",
     title: "Your reliable supply partner in every UAE port.",
-    intro: "Provisions, bonded stores and private crew orders for Chinese vessels calling at ports and anchorages across the UAE.",
+    intro: "Provisions, bonded stores and private crew orders for vessels at ports and anchorages across the UAE. We also provide services specially tailored to meet the requirements of Chinese vessels and crew.",
     submitRfq: "Submit RFQ",
     contactOps: "Contact sales",
     status: "Direct contact",
