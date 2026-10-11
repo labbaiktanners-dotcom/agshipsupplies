@@ -44,6 +44,7 @@ const copy = {
     contactOps: "Contact sales",
     status: "Direct contact",
     active: "AVAILABLE",
+    directLine: "Direct line",
     language: "Language",
     coverage: "Coverage",
     allPorts: "All UAE ports",
@@ -98,6 +99,7 @@ const copy = {
     contactOps: "联系销售",
     status: "直接联系",
     active: "可联系",
+    directLine: "直线电话",
     language: "语言",
     coverage: "覆盖范围",
     allPorts: "阿联酋所有港口",
@@ -195,6 +197,19 @@ function Index() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
+      <section aria-label={c.status} className="border-b border-border bg-deep">
+        <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-6 px-4 py-6 sm:flex-row sm:justify-between sm:px-6">
+          <div className="min-w-0 text-center sm:text-left">
+            <p className="inline-flex items-center gap-2 text-xs uppercase text-muted-foreground"><span className="signal-dot size-1.5 rounded-full bg-accent" />{c.directLine} · {c.active}</p>
+            <a href={CONTACT.phoneHref} className="mt-1 block text-2xl font-semibold transition-colors hover:text-accent sm:text-3xl">{CONTACT.phoneDisplay}</a>
+          </div>
+          <div className="grid shrink-0 grid-cols-2 gap-px border border-border bg-border">
+            <MiniQr image={whatsappQr.url} alt="QR code to contact Arabian Gulf Ship Supplies on WhatsApp" label="WhatsApp" copyLabel={c.copyWhatsapp} copiedLabel={c.copied} isCopied={copied === "whatsapp"} onCopy={copyWhatsapp} width={446} height={444} />
+            <MiniQr image={wechatQr.url} alt="QR code containing the WeChat ID HajiDubai" label="WeChat" copyLabel={c.copyWechat} copiedLabel={c.copied} isCopied={copied === "wechat"} onCopy={copyWechat} width={580} height={586} />
+          </div>
+        </div>
+      </section>
+
       <header className="sticky top-0 z-40 border-b border-primary/20 bg-deep/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-2 sm:px-6">
           <div className="flex min-w-0 items-center gap-4 text-xs text-muted-foreground">
@@ -284,6 +299,18 @@ function SectionHeader({ title, kicker }: { title: string; kicker: string }) {
 function Field({ name, label, type = "text", textarea = false, maxLength, className = "" }: { name: string; label: string; type?: string; textarea?: boolean; maxLength: number; className?: string }) {
   const classes = "mt-2 w-full border border-border bg-deep px-3 py-2.5 font-body text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-accent focus:ring-1 focus:ring-accent";
   return <label className={`block bg-card p-4 ${className}`}><span className="text-xs font-medium uppercase text-muted-foreground">{label}</span>{textarea ? <textarea name={name} maxLength={maxLength} rows={5} required className={classes} /> : <input name={name} type={type} maxLength={maxLength} required className={classes} />}</label>;
+}
+
+function MiniQr({ image, alt, label, copyLabel, copiedLabel, isCopied, onCopy, width, height }: { image: string; alt: string; label: string; copyLabel: string; copiedLabel: string; isCopied: boolean; onCopy: () => void; width: number; height: number }) {
+  return (
+    <div className="bg-panel p-3 text-center">
+      <img src={image} alt={alt} width={width} height={height} loading="lazy" className="mx-auto size-20 bg-foreground p-1" />
+      <p className="mt-2 text-xs font-semibold">{label}</p>
+      <button type="button" onClick={onCopy} className="mt-1 inline-flex cursor-pointer items-center gap-1 text-[11px] text-muted-foreground transition-colors hover:text-accent">
+        {isCopied ? <Check className="size-3" /> : <Copy className="size-3" />}{isCopied ? copiedLabel : copyLabel}
+      </button>
+    </div>
+  );
 }
 
 function QrCard({ image, alt, label, value, scanLabel, copyLabel, copiedLabel, isCopied, onCopy, width, height }: { image: string; alt: string; label: string; value: string; scanLabel: string; copyLabel: string; copiedLabel: string; isCopied: boolean; onCopy: () => void; width: number; height: number }) {
