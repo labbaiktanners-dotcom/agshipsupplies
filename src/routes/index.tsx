@@ -197,6 +197,19 @@ function Index() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
+      <section aria-label={c.status} className="border-b border-border bg-deep">
+        <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-6 px-4 py-6 sm:flex-row sm:justify-between sm:px-6">
+          <div className="min-w-0 text-center sm:text-left">
+            <p className="inline-flex items-center gap-2 text-xs uppercase text-muted-foreground"><span className="signal-dot size-1.5 rounded-full bg-accent" />{c.directLine} · {c.active}</p>
+            <a href={CONTACT.phoneHref} className="mt-1 block text-2xl font-semibold transition-colors hover:text-accent sm:text-3xl">{CONTACT.phoneDisplay}</a>
+          </div>
+          <div className="grid shrink-0 grid-cols-2 gap-px border border-border bg-border">
+            <MiniQr image={whatsappQr.url} alt="QR code to contact Arabian Gulf Ship Supplies on WhatsApp" label="WhatsApp" copyLabel={c.copyWhatsapp} copiedLabel={c.copied} isCopied={copied === "whatsapp"} onCopy={copyWhatsapp} width={446} height={444} />
+            <MiniQr image={wechatQr.url} alt="QR code containing the WeChat ID HajiDubai" label="WeChat" copyLabel={c.copyWechat} copiedLabel={c.copied} isCopied={copied === "wechat"} onCopy={copyWechat} width={580} height={586} />
+          </div>
+        </div>
+      </section>
+
       <header className="sticky top-0 z-40 border-b border-primary/20 bg-deep/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-2 sm:px-6">
           <div className="flex min-w-0 items-center gap-4 text-xs text-muted-foreground">
