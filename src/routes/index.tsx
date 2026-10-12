@@ -245,6 +245,10 @@ function Index() {
       <header className="sticky top-0 z-40 border-b border-primary/20 bg-deep/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-2 sm:px-6">
           <div className="flex min-w-0 items-center gap-3 text-xs text-muted-foreground sm:gap-4">
+            <span className="flex items-center gap-2 whitespace-nowrap sm:hidden">
+              <a href={CONTACT.phoneHref} className="flex items-center gap-1.5 font-medium text-foreground transition-colors hover:text-accent"><Phone className="size-3.5 text-accent" />{CONTACT.phoneDisplay}</a>
+              <a href={CONTACT.whatsappHref} target="_blank" rel="noreferrer" aria-label="WhatsApp" className="text-primary transition-colors hover:text-accent"><MessageCircle className="size-4" /></a>
+            </span>
             <span className="hidden items-center gap-1 whitespace-nowrap sm:flex">
               <a href={CONTACT.phoneHref} className="font-medium text-foreground transition-colors hover:text-accent">{c.callLabel}</a>
               <span aria-hidden="true">/</span>
@@ -252,7 +256,7 @@ function Index() {
               <span aria-hidden="true" className="pr-1">:</span>
               <a href={CONTACT.phoneHref} className="font-medium text-foreground transition-colors hover:text-accent">{CONTACT.phoneDisplay}</a>
             </span>
-            <button onClick={copyWechat} className="cursor-pointer whitespace-nowrap text-primary transition-colors hover:text-accent">{c.wechatLabel} {CONTACT.wechat}</button>
+            <button onClick={copyWechat} className="hidden cursor-pointer whitespace-nowrap text-primary transition-colors hover:text-accent sm:inline-block">{c.wechatLabel} {CONTACT.wechat}</button>
             <a href={`mailto:${CONTACT.email}`} className="hidden whitespace-nowrap text-primary transition-colors hover:text-accent md:inline">{CONTACT.email}</a>
           </div>
           <div className="flex shrink-0 items-center border border-border text-xs" aria-label={c.language}>
