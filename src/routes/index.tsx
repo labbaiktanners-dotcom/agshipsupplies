@@ -237,18 +237,6 @@ function Index() {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-background text-foreground">
-      <section aria-label={c.status} className="border-b border-border bg-deep">
-        <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-6 px-4 py-6 sm:flex-row sm:justify-between sm:px-6">
-          <div className="min-w-0 text-center sm:text-left">
-            <p className="inline-flex items-center gap-2 text-xs uppercase text-muted-foreground"><span className="signal-dot size-1.5 rounded-full bg-accent" />{c.directLine} · {c.active}</p>
-            <a href={CONTACT.phoneHref} className="mt-1 block text-2xl font-semibold transition-colors hover:text-accent sm:text-3xl">{CONTACT.phoneDisplay}</a>
-          </div>
-          <div className="grid shrink-0 grid-cols-2 gap-px border border-border bg-border">
-            <MiniQr image={whatsappQr.url} alt="QR code to contact Arabian Gulf Ship Supplies on WhatsApp" label="WhatsApp" copyLabel={c.copyWhatsapp} copiedLabel={c.copied} isCopied={copied === "whatsapp"} onCopy={copyWhatsapp} width={446} height={444} />
-            <MiniQr image={wechatQr.url} alt="QR code containing the WeChat ID HajiDubai" label="WeChat" copyLabel={c.copyWechat} copiedLabel={c.copied} isCopied={copied === "wechat"} onCopy={copyWechat} width={580} height={586} />
-          </div>
-        </div>
-      </section>
 
       <header className="sticky top-0 z-40 border-b border-primary/20 bg-deep/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-2 sm:px-6">
@@ -269,7 +257,7 @@ function Index() {
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-4 py-4 sm:px-6">
           <a href="#top" className="max-w-[16rem] text-sm font-bold leading-tight uppercase sm:text-base">Arabian Gulf <span className="text-accent">Ship Supplies</span></a>
           <nav className="hidden items-center gap-6 text-xs font-medium text-muted-foreground lg:flex">
-            <a href="#services" className="hover:text-accent">{c.navServices}</a><a href="#ports" className="hover:text-accent">{c.navPorts}</a><a href="#faq" className="hover:text-accent">{c.navFaq}</a>
+            <a href="#about" className="hover:text-accent">{c.navAbout}</a><a href="#services" className="hover:text-accent">{c.navServices}</a><a href="#ports" className="hover:text-accent">{c.navPorts}</a><a href="#faq" className="hover:text-accent">{c.navFaq}</a><a href="#contact" className="hover:text-accent">{c.navContact}</a>
           </nav>
           <Button asChild size="sm"><a href="#rfq">{c.navRfq}<ChevronRight className="size-4" /></a></Button>
         </div>
@@ -284,11 +272,34 @@ function Index() {
             <h1 className="max-w-[18ch] text-balance text-4xl font-semibold leading-[1.02] sm:text-5xl lg:text-6xl">{c.title}</h1>
             <p className="mt-6 max-w-[56ch] font-body text-base leading-relaxed text-muted-foreground">{c.intro}</p>
             <div className="mt-8 flex flex-wrap gap-3"><Button asChild><a href="#rfq">{c.submitRfq}<Send className="size-4" /></a></Button><Button asChild variant="outline"><a href={CONTACT.whatsappHref} target="_blank" rel="noreferrer">{c.contactOps}<MessageCircle className="size-4" /></a></Button></div>
+            <div className="mt-8 flex flex-wrap items-center gap-5">
+              <div><p className="inline-flex items-center gap-2 text-xs uppercase text-muted-foreground"><span className="signal-dot size-1.5 rounded-full bg-accent" />{c.directLine} · {c.active}</p><a href={CONTACT.phoneHref} className="mt-1 block text-2xl font-semibold transition-colors hover:text-accent">{CONTACT.phoneDisplay}</a></div>
+              <div className="grid grid-cols-2 gap-px border border-border bg-border">
+                <MiniQr image={whatsappQr.url} alt="QR code to contact Arabian Gulf Ship Supplies on WhatsApp" label="WhatsApp" width={446} height={444} />
+                <MiniQr image={wechatQr.url} alt="QR code containing the WeChat ID HajiDubai" label="WeChat" width={580} height={586} />
+              </div>
+            </div>
           </div>
           <div className="flex flex-col gap-3">
             <div className="relative aspect-[3/2] overflow-hidden border border-border bg-card"><img src={portImage} alt="Container vessel alongside a brightly lit UAE port at night" width={1200} height={832} fetchPriority="high" className="h-full w-full object-cover" /><div className="absolute inset-0 bg-background/10" /></div>
             <div className="grid grid-cols-3 gap-px overflow-hidden bg-border border border-border">
               <Stat label={c.status} value={c.active} accent /><Stat label={c.language} value="EN / 中文" /><Stat label={c.coverage} value={c.allPorts} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" className="border-b border-border bg-deep">
+        <div className="mx-auto grid max-w-[1440px] gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[.9fr_1.1fr]">
+          <div>
+            <p className="text-xs font-medium uppercase text-accent">{c.aboutKicker}</p>
+            <h2 className="mt-3 text-3xl font-semibold sm:text-4xl">{c.aboutTitle}</h2>
+            {c.aboutBody.map((p) => <p key={p} className="mt-5 font-body text-base leading-relaxed text-muted-foreground">{p}</p>)}
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold">{c.diffTitle}</h3>
+            <div className="mt-5 grid gap-px border border-border bg-border sm:grid-cols-2">
+              {c.pillars.map(([title, body], index) => <article key={title} className="bg-panel p-5"><span className="text-xs text-accent">0{index + 1}</span><h4 className="mt-1 font-semibold uppercase">{title}</h4><p className="mt-2 font-body text-sm leading-relaxed text-muted-foreground">{body}</p></article>)}
             </div>
           </div>
         </div>
@@ -318,6 +329,19 @@ function Index() {
           <div className="grid gap-px border-t border-border bg-border sm:grid-cols-2"><QrCard image={whatsappQr.url} alt="QR code to contact Arabian Gulf Ship Supplies on WhatsApp" label="WhatsApp" value={CONTACT.phoneDisplay} scanLabel={c.scan} copyLabel={c.copyWhatsapp} copiedLabel={c.copied} isCopied={copied === "whatsapp"} onCopy={copyWhatsapp} width={446} height={444} /><QrCard image={wechatQr.url} alt="QR code containing the WeChat ID HajiDubai" label="WeChat" value={CONTACT.wechat} scanLabel={c.scan} copyLabel={c.copyWechat} copiedLabel={c.copied} isCopied={copied === "wechat"} onCopy={copyWechat} width={580} height={586} /></div>
         </div>
       </div></section>
+
+      <section id="contact" className="border-t border-border bg-deep">
+        <div className="mx-auto max-w-[1440px] px-4 py-16 sm:px-6">
+          <SectionHeader title={c.contactTitle} kicker={c.contactKicker} />
+          <div className="grid gap-px border border-border bg-border md:grid-cols-2 lg:grid-cols-4">
+            <div className="bg-panel p-6"><p className="text-xs uppercase text-muted-foreground">{c.salesManager}</p><p className="mt-2 text-lg font-semibold">A. Haji Mohamed</p></div>
+            <div className="bg-panel p-6"><p className="flex items-center gap-2 text-xs uppercase text-muted-foreground"><Phone className="size-3.5 text-accent" />{c.mobile}</p><a href={CONTACT.phoneHref} className="mt-2 block text-lg font-semibold hover:text-accent">{CONTACT.phoneDisplay}</a><a href={CONTACT.whatsappHref} target="_blank" rel="noreferrer" className="mt-1 inline-block text-sm text-primary hover:text-accent">WhatsApp →</a></div>
+            <div className="bg-panel p-6"><p className="flex items-center gap-2 text-xs uppercase text-muted-foreground"><MessageCircle className="size-3.5 text-accent" />WeChat</p><button type="button" onClick={copyWechat} className="mt-2 block cursor-pointer text-lg font-semibold hover:text-accent">{CONTACT.wechat}</button><p className="mt-1 text-sm text-muted-foreground">{copied === "wechat" ? c.copied : c.copyWechat}</p></div>
+            <div className="bg-panel p-6"><p className="flex items-center gap-2 text-xs uppercase text-muted-foreground"><Mail className="size-3.5 text-accent" />{c.email}</p><a href={`mailto:${CONTACT.email}`} className="mt-2 block break-all text-lg font-semibold hover:text-accent">{CONTACT.email}</a></div>
+            <div className="flex items-start gap-2 bg-card p-6 font-body text-sm text-muted-foreground md:col-span-2 lg:col-span-4"><MapPin className="mt-0.5 size-4 shrink-0 text-accent" />{c.address}: Arabian Gulf Ship Supplies · {CONTACT.address}</div>
+          </div>
+        </div>
+      </section>
 
       <footer className="border-t border-border bg-deep pb-24 sm:pb-8"><div className="mx-auto grid max-w-[1440px] gap-6 px-4 py-8 sm:px-6 md:grid-cols-[1fr_auto]"><div><p className="font-semibold uppercase">Arabian Gulf <span className="text-accent">Ship Supplies</span></p><p className="mt-1 font-body text-sm text-muted-foreground">Marine provisions and vessel supply across the UAE.</p></div><div className="space-y-2 font-body text-sm text-muted-foreground"><p className="flex items-start gap-2"><MapPin className="mt-0.5 size-4 shrink-0 text-accent" />{c.address}: {CONTACT.address}</p><p className="flex items-center gap-2"><Mail className="size-4 text-accent" /><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></p></div></div></footer>
 
