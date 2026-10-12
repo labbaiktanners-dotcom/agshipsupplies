@@ -6,3 +6,5 @@
 - [x] Use the requested UAE port order and secondary Fujairah address placement
 - [x] Verify RFQ contact actions and responsive layout
 - [x] Give both QR cards a copy button so they align equally
+- [x] Move top QR codes into the hero below the buttons, scan-only (no copy buttons)
+- [x] Add About Us (brochure "Who we are" + AGSS difference) and Contact Us sections with header links
