@@ -365,16 +365,8 @@ function Field({ name, label, type = "text", textarea = false, maxLength, classN
   return <label className={`block bg-card p-4 ${className}`}><span className="text-xs font-medium uppercase text-muted-foreground">{label}</span>{textarea ? <textarea name={name} maxLength={maxLength} rows={5} required className={classes} /> : <input name={name} type={type} maxLength={maxLength} required className={classes} />}</label>;
 }
 
-function MiniQr({ image, alt, label, copyLabel, copiedLabel, isCopied, onCopy, width, height }: { image: string; alt: string; label: string; copyLabel: string; copiedLabel: string; isCopied: boolean; onCopy: () => void; width: number; height: number }) {
-  return (
-    <div className="bg-panel p-3 text-center">
-      <img src={image} alt={alt} width={width} height={height} loading="lazy" className="mx-auto size-20 bg-foreground p-1" />
-      <p className="mt-2 text-xs font-semibold">{label}</p>
-      <button type="button" onClick={onCopy} className="mt-1 inline-flex cursor-pointer items-center gap-1 text-[11px] text-muted-foreground transition-colors hover:text-accent">
-        {isCopied ? <Check className="size-3" /> : <Copy className="size-3" />}{isCopied ? copiedLabel : copyLabel}
-      </button>
-    </div>
-  );
+function MiniQr({ image, alt, label, width, height }: { image: string; alt: string; label: string; width: number; height: number }) {
+  return <div className="bg-panel p-3 text-center"><img src={image} alt={alt} width={width} height={height} loading="lazy" className="mx-auto size-24 bg-foreground p-1" /><p className="mt-2 text-xs font-semibold">{label}</p></div>;
 }
 
 function QrCard({ image, alt, label, value, scanLabel, copyLabel, copiedLabel, isCopied, onCopy, width, height }: { image: string; alt: string; label: string; value: string; scanLabel: string; copyLabel: string; copiedLabel: string; isCopied: boolean; onCopy: () => void; width: number; height: number }) {
