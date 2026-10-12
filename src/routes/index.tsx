@@ -106,6 +106,8 @@ const copy = {
     salesManager: "Sales Manager",
     mobile: "Mobile / WhatsApp",
     email: "Email",
+    callLabel: "Call",
+    wechatLabel: "WeChat:",
   },
   zh: {
     navServices: "服务项目",
@@ -181,6 +183,8 @@ const copy = {
     salesManager: "销售经理",
     mobile: "手机 / WhatsApp",
     email: "电子邮箱",
+    callLabel: "电话",
+    wechatLabel: "微信：",
   },
 } as const;
 
@@ -240,11 +244,16 @@ function Index() {
 
       <header className="sticky top-0 z-40 border-b border-primary/20 bg-deep/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-2 sm:px-6">
-          <div className="flex min-w-0 items-center gap-4 text-xs text-muted-foreground">
-            <a href={CONTACT.phoneHref} className="hidden font-medium text-foreground transition-colors hover:text-accent sm:inline">{CONTACT.phoneDisplay}</a>
-            <a href={CONTACT.whatsappHref} target="_blank" rel="noreferrer" className="text-primary transition-colors hover:text-accent">WhatsApp</a>
-            <button onClick={copyWechat} className="cursor-pointer text-primary transition-colors hover:text-accent">WeChat: {CONTACT.wechat}</button>
-            <a href={`mailto:${CONTACT.email}`} className="hidden text-primary transition-colors hover:text-accent md:inline">{CONTACT.email}</a>
+          <div className="flex min-w-0 items-center gap-3 text-xs text-muted-foreground sm:gap-4">
+            <span className="hidden items-center gap-1 whitespace-nowrap sm:flex">
+              <a href={CONTACT.phoneHref} className="font-medium text-foreground transition-colors hover:text-accent">{c.callLabel}</a>
+              <span aria-hidden="true">/</span>
+              <a href={CONTACT.whatsappHref} target="_blank" rel="noreferrer" className="font-medium text-primary transition-colors hover:text-accent">WhatsApp</a>
+              <span aria-hidden="true" className="pr-1">:</span>
+              <a href={CONTACT.phoneHref} className="font-medium text-foreground transition-colors hover:text-accent">{CONTACT.phoneDisplay}</a>
+            </span>
+            <button onClick={copyWechat} className="cursor-pointer whitespace-nowrap text-primary transition-colors hover:text-accent">{c.wechatLabel} {CONTACT.wechat}</button>
+            <a href={`mailto:${CONTACT.email}`} className="hidden whitespace-nowrap text-primary transition-colors hover:text-accent md:inline">{CONTACT.email}</a>
           </div>
           <div className="flex shrink-0 items-center border border-border text-xs" aria-label={c.language}>
             {(["en", "zh"] as const).map((code) => (
