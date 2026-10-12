@@ -247,7 +247,7 @@ function Index() {
           <div className="flex min-w-0 items-center gap-3 text-xs text-muted-foreground sm:gap-4">
             <span className="flex items-center gap-2 whitespace-nowrap sm:hidden">
               <a href={CONTACT.phoneHref} className="flex items-center gap-1.5 font-medium text-foreground transition-colors hover:text-accent"><Phone className="size-3.5 text-accent" />{CONTACT.phoneDisplay}</a>
-              <a href={CONTACT.whatsappHref} target="_blank" rel="noreferrer" aria-label="WhatsApp" className="text-primary transition-colors hover:text-accent"><MessageCircle className="size-4" /></a>
+              <a href={CONTACT.whatsappHref} target="_blank" rel="noreferrer" className="flex items-center gap-1 font-medium text-primary transition-colors hover:text-accent"><MessageCircle className="size-4" />WhatsApp</a>
             </span>
             <span className="hidden items-center gap-1 whitespace-nowrap sm:flex">
               <a href={CONTACT.phoneHref} className="font-medium text-foreground transition-colors hover:text-accent">{c.callLabel}</a>
