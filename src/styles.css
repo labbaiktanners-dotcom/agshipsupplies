@@ -64,6 +64,7 @@
   --color-neon: var(--neon);
   --color-line: var(--line);
   --color-fog: var(--fog);
+  --font-brand: "Montserrat", "Noto Sans SC", sans-serif;
   --font-sans: "Space Grotesk", "Noto Sans SC", sans-serif;
   --font-body: "IBM Plex Sans", "Noto Sans SC", sans-serif;
 }

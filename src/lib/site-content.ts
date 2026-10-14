@@ -1,10 +1,10 @@
 export const PORTS = [
-  "Fujairah",
-  "Khorfakkan",
+  "Fujairah Port",
+  "Khorfakkan Port",
   "Jebel Ali",
-  "Khalifa",
+  "Khalifa Port - Abu Dhabi",
   "RAK Mina Saqr",
-  "Sharjah",
+  "Sharjah Port",
 ] as const;
 
 export const PRIMARY_SERVICES = ["provisions", "bonded", "crew"] as const;
