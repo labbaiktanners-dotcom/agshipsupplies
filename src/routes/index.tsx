@@ -45,10 +45,10 @@ const copy = {
     contactOps: "Contact sales",
     status: "Direct contact",
     active: "AVAILABLE",
-    directLine: "Direct line",
+    directLine: "Direct Line (Available 24/7):",
     language: "Language",
     coverage: "Coverage",
-    allPorts: "All UAE Ports Coverage",
+    allPorts: "Coverage: All UAE Ports and Anchorages",
     serviceTitle: "One-stop supply",
     serviceKicker: "Three core business lines",
     services: [
@@ -122,10 +122,10 @@ const copy = {
     contactOps: "联系销售",
     status: "直接联系",
     active: "可联系",
-    directLine: "直线电话",
+    directLine: "直线电话（24/7 全天候）：",
     language: "语言",
     coverage: "覆盖范围",
-    allPorts: "阿联酋全港口覆盖",
+    allPorts: "服务覆盖：阿联酋所有港口及锚地",
     serviceTitle: "一站式供应",
     serviceKicker: "三大核心业务",
     services: [
@@ -270,7 +270,7 @@ function Index() {
           </div>
         </div>
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-4 py-4 sm:px-6">
-          <a href="#top" className="flex items-center gap-3"><img src={logo.url} alt="AGSS logo" width={512} height={512} className="size-11 shrink-0 rounded-md bg-white object-contain p-0.5 sm:size-12" /><span className="max-w-[17rem] font-brand text-base font-medium leading-tight uppercase tracking-[0.08em] sm:text-xl">Arabian Gulf <span className="text-accent">Ship Supplies</span></span></a>
+          <a href="#top" className="flex min-w-0 items-center gap-2 sm:gap-3"><img src={logo.url} alt="AGSS logo" width={512} height={512} className="size-11 shrink-0 rounded-md bg-white object-contain p-0.5 sm:size-12" /><span className="whitespace-nowrap font-brand text-[clamp(0.7rem,3.2vw,1.25rem)] font-medium leading-tight uppercase tracking-[0.06em]">Arabian Gulf <span className="text-accent">Ship Supplies</span></span></a>
           <nav className="hidden items-center gap-6 text-xs font-medium text-muted-foreground lg:flex">
             <a href="#about" className="hover:text-accent">{c.navAbout}</a><a href="#services" className="hover:text-accent">{c.navServices}</a><a href="#ports" className="hover:text-accent">{c.navPorts}</a><a href="#faq" className="hover:text-accent">{c.navFaq}</a><a href="#contact" className="hover:text-accent">{c.navContact}</a>
           </nav>
@@ -288,7 +288,7 @@ function Index() {
             <p className="mt-6 max-w-[56ch] font-body text-base leading-relaxed text-muted-foreground">{c.intro}</p>
             <div className="mt-8 flex flex-wrap gap-3"><Button asChild><a href="#rfq">{c.submitRfq}<Send className="size-4" /></a></Button><Button asChild variant="outline"><a href={CONTACT.whatsappHref} target="_blank" rel="noreferrer">{c.contactOps}<MessageCircle className="size-4" /></a></Button></div>
             <div className="mt-8 flex flex-wrap items-center gap-5">
-              <div><p className="inline-flex items-center gap-2 text-xs uppercase text-muted-foreground"><span className="signal-dot size-1.5 rounded-full bg-accent" />{c.directLine} · {c.active}</p><a href={CONTACT.phoneHref} className="mt-1 block text-2xl font-semibold transition-colors hover:text-accent">{CONTACT.phoneDisplay}</a></div>
+              <div><p className="inline-flex items-center gap-2 text-xs text-muted-foreground"><span className="signal-dot size-1.5 rounded-full bg-accent" />{c.directLine}</p><a href={CONTACT.phoneHref} className="mt-1 block text-2xl font-semibold transition-colors hover:text-accent">{CONTACT.phoneDisplay}</a></div>
               <div className="grid grid-cols-2 gap-px border border-border bg-border">
                 <MiniQr image={whatsappQr.url} alt="QR code to contact Arabian Gulf Ship Supplies on WhatsApp" label="WhatsApp" width={446} height={444} />
                 <MiniQr image={wechatQr.url} alt="QR code containing the WeChat ID HajiDubai" label="WeChat" width={580} height={586} />
@@ -360,9 +360,9 @@ function Index() {
 
       <footer className="border-t border-border bg-deep pb-24 sm:pb-8"><div className="mx-auto grid max-w-[1440px] gap-6 px-4 py-8 sm:px-6 md:grid-cols-[1fr_auto]"><div><div className="flex items-center gap-3"><img src={logo.url} alt="AGSS logo" width={512} height={512} loading="lazy" className="size-12 rounded-md bg-white object-contain p-0.5" /><p className="font-brand text-lg font-medium uppercase tracking-[0.08em]">Arabian Gulf <span className="text-accent">Ship Supplies</span></p></div><p className="mt-1 font-body text-sm text-muted-foreground">Marine provisions and vessel supply across the UAE.</p></div><div className="space-y-2 font-body text-sm text-muted-foreground"><p className="flex items-start gap-2"><MapPin className="mt-0.5 size-4 shrink-0 text-accent" />{c.address}: {CONTACT.address}</p><p className="flex items-center gap-2"><Mail className="size-4 text-accent" /><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></p></div></div></footer>
 
-      <div className="fixed bottom-5 right-4 z-50 flex flex-col gap-2 rounded-full border border-border bg-card/90 p-1.5 shadow-2xl backdrop-blur">
-        <a href={CONTACT.whatsappHref} target="_blank" rel="noreferrer" aria-label="WhatsApp" title="WhatsApp" className="flex size-11 items-center justify-center rounded-full bg-primary text-primary-foreground transition-colors hover:bg-accent hover:text-accent-foreground"><MessageCircle className="size-5" /></a>
-        <button type="button" onClick={() => setWechatOpen(true)} aria-label="WeChat" title="WeChat" className="flex size-11 cursor-pointer items-center justify-center rounded-full bg-panel text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"><span className="text-xs font-bold">微信</span></button>
+      <div className="fixed bottom-5 right-4 z-50 flex flex-col gap-2 rounded-full border border-foreground/15 bg-foreground/10 p-1.5 shadow-2xl backdrop-blur-xl backdrop-saturate-150">
+        <a href={CONTACT.whatsappHref} target="_blank" rel="noreferrer" aria-label="WhatsApp" title="WhatsApp" className="flex size-11 items-center justify-center rounded-full bg-[#25D366] text-white transition-opacity hover:opacity-85"><WhatsAppLogo className="size-6" /></a>
+        <button type="button" onClick={() => setWechatOpen(true)} aria-label="WeChat" title="WeChat" className="flex size-11 cursor-pointer items-center justify-center rounded-full bg-[#07C160] text-white transition-opacity hover:opacity-85"><WeChatLogo className="size-6" /></button>
         <a href={`mailto:${CONTACT.email}`} aria-label="Email" title="Email" className="flex size-11 items-center justify-center rounded-full bg-panel text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"><Mail className="size-5" /></a>
         <a href="tel:+971509883935" aria-label="Call" title="Call" className="flex size-11 items-center justify-center rounded-full bg-accent text-accent-foreground md:hidden"><Phone className="size-5" /></a>
       </div>
@@ -400,4 +400,12 @@ function MiniQr({ image, alt, label, width, height }: { image: string; alt: stri
 
 function QrCard({ image, alt, label, value, scanLabel, copyLabel, copiedLabel, isCopied, onCopy, width, height }: { image: string; alt: string; label: string; value: string; scanLabel: string; copyLabel: string; copiedLabel: string; isCopied: boolean; onCopy: () => void; width: number; height: number }) {
   return <div className="bg-panel p-5"><div className="flex items-center gap-4"><img src={image} alt={alt} width={width} height={height} loading="lazy" className="size-24 bg-foreground p-1" /><div><p className="text-xs uppercase text-muted-foreground">{scanLabel}</p><p className="mt-1 font-semibold">{label}</p><p className="text-sm text-accent">{value}</p></div></div><Button type="button" variant="ghost" size="sm" className="mt-3" onClick={onCopy}>{isCopied ? <Check className="size-4" /> : <Copy className="size-4" />}{isCopied ? copiedLabel : copyLabel}</Button></div>;
+}
+
+function WhatsAppLogo({ className }: { className?: string }) {
+  return <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg>;
+}
+
+function WeChatLogo({ className }: { className?: string }) {
+  return <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}><path d="M8.69 2.19C3.89 2.19 0 5.48 0 9.53c0 2.21 1.17 4.2 3 5.55a.59.59 0 0 1 .21.66l-.39 1.48c-.02.07-.05.14-.05.21 0 .16.13.29.29.29a.33.33 0 0 0 .17-.05l1.9-1.11a.9.9 0 0 1 .73-.1c.89.26 1.84.4 2.83.4.16 0 .32 0 .48-.01a5.86 5.86 0 0 1-.25-1.69c0-3.69 3.56-6.68 7.95-6.68h.47C16.73 4.83 13.07 2.19 8.69 2.19m-2.6 4.41c.63 0 1.15.52 1.15 1.16 0 .64-.52 1.16-1.15 1.16-.64 0-1.16-.52-1.16-1.16 0-.64.52-1.16 1.16-1.16m5.81 0c.64 0 1.15.52 1.15 1.16 0 .64-.51 1.16-1.15 1.16-.64 0-1.16-.52-1.16-1.16 0-.64.52-1.16 1.16-1.16m4.91 2.86c-3.88 0-7.04 2.62-7.04 5.86 0 3.24 3.16 5.86 7.04 5.86.8 0 1.58-.11 2.29-.32a.72.72 0 0 1 .59.08l1.54.9c.04.03.09.04.14.04a.24.24 0 0 0 .23-.24c0-.06-.02-.12-.04-.17l-.32-1.2a.48.48 0 0 1 .17-.54C23.07 18.67 24 17.07 24 15.32c0-3.24-3.15-5.86-7.04-5.86m-2.33 2.7c.52 0 .94.42.94.94a.94.94 0 0 1-1.88 0c0-.52.42-.94.94-.94m4.66 0c.52 0 .94.42.94.94a.94.94 0 0 1-1.88 0c0-.52.42-.94.94-.94"/></svg>;
 }
