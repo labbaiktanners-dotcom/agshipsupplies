@@ -58,7 +58,7 @@ const copy = {
     ],
     technical: "Technical supplies are also available on request, including selected engine, deck, cabin, galley, electrical and safety stores.",
     portTitle: "UAE port coverage",
-    portIntro: "Supply coordination at ports and anchorages throughout the United Arab Emirates.",
+    portIntro: "24/7 Supply coordination at ports and anchorages throughout the United Arab Emirates.",
     otherPorts: "All other UAE ports & anchorages",
     notice: "Service notice",
     disclaimer: "Port and customs charges, and supply boat charges if any, are excluded.",
