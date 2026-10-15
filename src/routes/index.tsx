@@ -269,13 +269,17 @@ function Index() {
             ))}
           </div>
         </div>
-        <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-4 py-4 sm:px-6">
-          <a href="#top" className="flex min-w-0 items-center gap-2 sm:gap-3"><img src={logo} alt="AGSS logo" width={512} height={512} className="size-11 shrink-0 rounded-md bg-white object-contain p-0.5 sm:size-12" /><span className="whitespace-nowrap font-brand text-[clamp(0.7rem,3.2vw,1.25rem)] font-medium leading-tight uppercase tracking-[0.06em]">Arabian Gulf <span className="text-accent">Ship Supplies</span></span></a>
-          <nav className="hidden items-center gap-6 text-xs font-medium text-muted-foreground lg:flex">
-            <a href="#about" className="hover:text-accent">{c.navAbout}</a><a href="#services" className="hover:text-accent">{c.navServices}</a><a href="#ports" className="hover:text-accent">{c.navPorts}</a><a href="#faq" className="hover:text-accent">{c.navFaq}</a><a href="#contact" className="hover:text-accent">{c.navContact}</a>
-          </nav>
-          <Button asChild size="sm"><a href="#rfq">{c.navRfq}<ChevronRight className="size-4" /></a></Button>
+        <div className="mx-auto grid max-w-[1440px] grid-cols-[minmax(0,1fr)_auto] items-center gap-3 border-t border-border/60 px-4 py-3 sm:gap-6 sm:px-6">
+          <a href="#top" className="flex min-w-0 items-center gap-2 sm:gap-3"><img src={logo} alt="AGSS logo" width={512} height={512} className="size-10 shrink-0 rounded-md bg-white object-contain p-0.5 sm:size-12" /><span className="min-w-0 whitespace-nowrap font-brand text-[clamp(0.62rem,3.4vw,1.25rem)] font-medium leading-tight uppercase tracking-[0.04em] sm:tracking-[0.06em]">Arabian Gulf <span className="text-accent">Ship Supplies</span></span></a>
+          <Button asChild size="sm" className="shrink-0 px-2.5 sm:px-3"><a href="#rfq"><span className="hidden min-[420px]:inline">{c.navRfq}</span><span className="min-[420px]:hidden">RFQ</span><ChevronRight className="size-4" /></a></Button>
         </div>
+        <nav className="border-t border-border/60 bg-background/40" aria-label="Sections">
+          <div className="mx-auto flex max-w-[1440px] gap-2 overflow-x-auto px-4 py-2 text-xs font-medium text-muted-foreground [scrollbar-width:none] sm:justify-center sm:px-6 [&::-webkit-scrollbar]:hidden">
+            {([["#about", c.navAbout], ["#services", c.navServices], ["#ports", c.navPorts], ["#faq", c.navFaq], ["#contact", c.navContact]] as const).map(([href, label]) => (
+              <a key={href} href={href} className="shrink-0 whitespace-nowrap rounded-full border border-border px-3.5 py-1.5 transition-colors hover:border-accent hover:text-accent">{label}</a>
+            ))}
+          </div>
+        </nav>
       </header>
 
       <section id="top" className="relative overflow-hidden border-b border-border">
